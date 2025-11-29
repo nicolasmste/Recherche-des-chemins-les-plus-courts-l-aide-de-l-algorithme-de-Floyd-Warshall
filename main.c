@@ -1,171 +1,143 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_V 100
+#include <string.h>
+#include "FloydWarshall.h"
+#include <string.h>
 
-typedef struct edge {
-    int existe; // 1 s'il y a une arête 0 sinon
-    int poids; //poids de l'arête
-} Edge;
+// Fonction utilitaire pour vider le buffer d'entrée (évite les bugs de scanf)
+void viderBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
+}
 
-typedef struct Graph {
-    int nbvertexes; //nombre de sommets
-    Edge matrice[MAX_V][MAX_V]; //matrice d'adjacence
-} Graph;
-
-
-/* initialiser unIgraphe à vide  */
-void init_graphe(Graph *g) {
-    g->nbvertexes = 0;
-    for (int i = 0; i < MAX_V; i++) {
-        for (int j = 0; j < MAX_V; j++) {
-            g->matrice[i][j].existe = 0;
-            g->matrice[i][j].poids = 0;
-        }
+char* selectiongraphe(int entier){//On ouvre le graphe voulu
+    switch(entier){
+        case 1:
+            return "graphe1.txt";
+        case 2:
+            return "graphe2.txt";
+        case 3:
+            return "graphe3.txt";
+        case 4:
+            return "graphe4.txt";
+        case 5:
+            return "graphe5.txt";
+        case 6:
+            return "graphe6.txt";
+        case 7:
+            return "graphe7.txt";
+        case 8:
+            return "graphe8.txt";
+        case 9:
+            return "graphe9.txt";
+        case 10:
+            return "graphe10.txt";
+        case 11:
+            return "graphe11.txt";
+        case 12:
+            return "graphe12.txt";
+        case 13:
+            return "graphe13.txt";
+        default:
+            printf("Veuillez rentrer un numéro entre 1 et 13;");
+            return "faux";
     }
 }
 
-/* Lit un Graphe dans un fichier */
-Graph charger_graphe(const char *nom_fichier) {
-    Graph g;
-    FILE *fichier = fopen(nom_fichier, "r");
+int main() {
+    int choixMenu = 0;
+    int entier;
+    char nomFichier[30];
 
-    if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier");
-        exit(EXIT_FAILURE);
-    }
+    printf("*******\n");
+    printf("Projet Floyd-Warshall\n");
+    printf("********\n\n");
 
-    init_graphe(&g);
-    if (fscanf(fichier, "%d", &g.nbvertexes) != 1) { //Lecture d'un caractère nb de sommets
-        fprintf(stderr, "Erreur de format: nombre de sommets manquant.\n");
-        fclose(fichier);
-        exit(EXIT_FAILURE);
-    }
 
-    if (g.nbvertexes > MAX_V) {
-        fprintf(stderr, "Erreur: Le graphe dépasse la capacité MAX_V (%d).\n", MAX_V);
-        fclose(fichier);
-        exit(EXIT_FAILURE);
-    }
 
-    int src, dest, poids;
-    while (fscanf(fichier, "%d %d %d", &src, &dest, &poids) != EOF) {
-        if (src >= 0 && src < g.nbvertexes && dest >= 0 && dest < g.nbvertexes) {
-            g.matrice[src][dest].existe = 1;
-            g.matrice[src][dest].poids = poids; //JCP SI on prend en compte les graphe non orientés.
+    //  Boucle principale : Exécuter sur une suite de graphes sans relancer le programme
+    do {
+        // --- ÉTAPE 1 : Chargement du graphe ---
+        // L'utilisateur indique le graphe à analyser
+        printf("\n--- Chargement d'un nouveau graphe ---\n");
+        printf("Entrez le nom du fichier du graphe  : ");
+        scanf("%d",&entier);
+        strcpy(nomFichier, selectiongraphe(entier));
+        //  Chargement en mémoire
+        if (strcmp(nomFichier,"faux") != 0) {
+            Graph graphe = charger_graphe(nomFichier);
 
-            // g.matrice[dest][src].existe = 1; g.matrice[dest][src].poids = poids;
-        } else {
-            fprintf(stderr, "Avertissement: sommet invalide ignoré (%d -> %d)\n", src, dest);
-        }
-    }
-    fclose(fichier);
-    return g;
-}
 
-void afficherGraphe(Graph g) {
-    printf("Graphe avec %d sommets :\n", g.nbvertexes);
-    for (int i = 0; i < g.nbvertexes; i++) {
-        for (int j = 0; j < g.nbvertexes; j++) {
-            if (g.matrice[i][j].existe) {
-                printf("%3d ", g.matrice[i][j].poids);
-            } else {
-                printf(" - ");
-            }
-        }
-        printf("\n");
-    }
-}
+            //  À partir d'ici, on n'accède plus au fichier, tout est en mémoire.
 
-void afficherMatriceL(Edge L[][MAX_V], int n) {
-    printf("\nMatrice des plus courts chemins (poids) :\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (!L[i][j].existe)
-                printf(" Inf ");
-            else
-                printf("%3d ", L[i][j].poids);
-        }
-        printf("\n");
-    }
-}
+            // --- ÉTAPE 2 : Affichage Initial ---
+            //  Affichage sous forme matricielle
 
-void afficherMatriceP(int P[][MAX_V], int n) {
-    printf("\nMatrice des prédécesseurs P :\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%3d ", P[i][j]);
-        }
-        printf("\n");
-    }
-}
+            printf("=== GRAPHE CHARGE ===\n");
+            afficherGraphe(graphe);
 
-void floydWarshall(const Graph graphe,Edge L[][MAX_V], int P[][MAX_V]) {
-    int n = graphe.nbvertexes;
-    for (int i=0; i<n; i++) {
-        for (int j=0; j<n; j++) {
-            L[i][j]=graphe.matrice[i][j];
-            if (i == j) {
-                L[i][j].existe = 1;
-                L[i][j].poids = 0;
-                P[i][j] = i;
-            }
-            else if (graphe.matrice[i][j].existe) {
-                P[i][j] = i;
-            }
-            else {
-                P[i][j] = i;
-            }
-        }
-    }  ///AMBIGUITE 2 ET 1 DANS LA MEME CASE
-    for (int k =0;k<n;k++) {
-        for (int i =0;i<n;i++){
-            for (int j =0;j<n;j++){
-                if (L[i][k].existe && L[k][j].existe) {
 
-                    if (!L[i][j].existe ||
-                        L[i][k].poids + L[k][j].poids < L[i][j].poids) {
-                        L[i][j].existe = 1;
-                        L[i][j].poids = L[i][k].poids + L[k][j].poids;
-                        P[i][j] = P[k][j];
+
+            // --- ÉTAPE 3 : Algorithme de Floyd-Warshall ---
+            // xécution et affichage des matrices intermédiaires
+            printf("\n[Execution de Floyd-Warshall]\n");
+            static Edge L[MAX_V][MAX_V]; //Static pour eviter les problemes de memoire
+            static Predecesseurs P[MAX_V][MAX_V];
+            int circuit = floydWarshall(graphe, L, P);
+
+            // --- ÉTAPE 4 : Circuits Absorbants ---
+            // Indication de la présence d'un circuit absorbant
+            if (!circuit) {
+                printf("\n=== RESULTAT FINAL ===\n");
+                printf("Aucun circuit absorbant détecté.\n");
+
+                printf("\n--- Recherche de chemins optimaux ---\n");
+                int sommetDepart, sommetArrivee;
+                int choixChemin = 1;
+
+                while (1) {
+                    //  Chemin ?
+                    printf("\nSouhaitez-vous afficher un chemin ? (1: Oui, 0: Non) : ");
+                    if (scanf("%d", &choixChemin) != 1) {
+                        viderBuffer(); // Gérer les entrées non numériques
+                        choixChemin = 0;
+                    }
+
+                    //  Si non, arrêter cette boucle
+                    if (choixChemin == 0) {
+                        break;
+                    }
+
+                    // Sommet de départ ? Sommet d'arrivée ?
+                    printf("Sommet de depart ? : ");
+                    scanf("%d", &sommetDepart);
+
+                    printf("Sommet d'arrivee ? : ");
+                    scanf("%d", &sommetArrivee);
+
+                    // Validation basique des sommets
+                    if (sommetDepart < 0 || sommetDepart >= graphe.nbvertexes ||
+                        sommetArrivee < 0 || sommetArrivee >= graphe.nbvertexes) {
+                        printf("Erreur : Les sommets doivent etre entre 0 et %d.\n", graphe.nbvertexes - 1);
+                        } else {
+                            // Affichage du chemin
+                            reconstruireTousLesCheminsIteratif(sommetDepart, sommetArrivee, P,L);
                         }
+
+                    // Recommencer ? (C'est implicite avec le while(1) et la question au début)
                 }
-            }
+
+            }else printf("L'affichage des chemins n'est pas possible.\n");
+
         }
-    }
-}
+        viderBuffer();
+        // Demander si on veut traiter un autre graphe
+        printf("\n---------------------------------------------------\n");
+        printf("Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) : ");
+        scanf("%d", &choixMenu);
 
+    } while (choixMenu != 0);
 
-int main(void) {
-
-    int run =1;
-    while (run) {
-        char nom_fichier[MAX_V];
-        Edge L[MAX_V][MAX_V];
-        int  P[MAX_V][MAX_V];
-        printf("Bonjour fichier ?\n");
-        scanf("%s", nom_fichier);
-        Graph monGraphe = charger_graphe(nom_fichier);
-        afficherGraphe(monGraphe);
-        floydWarshall(monGraphe,L,P);
-        afficherMatriceL(L,monGraphe.nbvertexes);
-        afficherMatriceP(P,monGraphe.nbvertexes);
-
-        run = 0;
-    }
+    printf("Fin du programme.\n");
     return 0;
 }
-
-/*à faire :
- * Séparer le code en plusieurs fichiers + make file ou autre chose pour faire comme une librairie
- * Afficher Pour l'utilisateur les chemins
- * circuit absorband -- effectué code à rajouter
- * Afficher l'itération, P et L à chaque itération -- Prend 2 secondes
- *Améliorer l'interface utilisateur plus la boucle principame
- * Rendre les matrices plus lisible
- * Vérif représentation matricielle
- *
- * Question à poser :
- * "LES GRAPHES SERONT indiqués par des numéros" ???
- * Pas de graphe non-orienté ??
- * Doit on montrer le cas 1 OU 2
- */
