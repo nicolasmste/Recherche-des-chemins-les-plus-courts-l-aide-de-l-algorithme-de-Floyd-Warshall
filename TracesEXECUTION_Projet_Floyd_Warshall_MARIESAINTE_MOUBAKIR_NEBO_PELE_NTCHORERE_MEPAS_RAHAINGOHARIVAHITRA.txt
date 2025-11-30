@@ -1,0 +1,2231 @@
+*******
+Projet Floyd-Warshall
+********
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :1
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (4 sommets) :
+
+         0    1    2    3
+      --------------------
+   0 |  -     1    5   -
+   1 |  -    -     3    5
+   2 |  -    -    -     2
+   3 |  -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     5   Inf
+   1 |  Inf     0     3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     5   Inf
+   1 |  Inf     0     3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     4     6
+   1 |  Inf     0     3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     1     1
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     4     6
+   1 |  Inf     0     3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     1   1,2
+   1 |    1     1     1   1,2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     4     6
+   1 |  Inf     0     3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     1   1,2
+   1 |    1     1     1   1,2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :2
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (4 sommets) :
+
+         0    1    2    3
+      --------------------
+   0 |  -     1    5   -
+   1 |  -    -    -3    5
+   2 |  -    -    -     2
+   3 |  -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     5   Inf
+   1 |  Inf     0    -3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1     5   Inf
+   1 |  Inf     0    -3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -2     6
+   1 |  Inf     0    -3     5
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     1     1
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -2     0
+   1 |  Inf     0    -3    -1
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     1     2
+   1 |    1     1     1     2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -2     0
+   1 |  Inf     0    -3    -1
+   2 |  Inf   Inf     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     1     2
+   1 |    1     1     1     2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :3
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (4 sommets) :
+
+         0    1    2    3
+      --------------------
+   0 |  -     1   -5   -
+   1 |  -    -    -3    2
+   2 |  -     4   -     2
+   3 |  -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf     0    -3     2
+   2 |  Inf     4     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf     0    -3     2
+   2 |  Inf     4     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5     3
+   1 |  Inf     0    -3     2
+   2 |  Inf     4     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     1
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -1    -5    -3
+   1 |  Inf     0    -3    -1
+   2 |  Inf     4     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     2     0     2
+   1 |    1     1     1     2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -1    -5    -3
+   1 |  Inf     0    -3    -1
+   2 |  Inf     4     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     2     0     2
+   1 |    1     1     1     2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :4
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (4 sommets) :
+
+         0    1    2    3
+      --------------------
+   0 |  -     1   -5   -
+   1 |  -    -    -3    2
+   2 |  -    -1   -     2
+   3 |  -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf     0    -3     2
+   2 |  Inf    -1     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf     0    -3     2
+   2 |  Inf    -1     0     2
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5     3
+   1 |  Inf     0    -3     2
+   2 |  Inf    -1    -4     1
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     1
+   1 |    1     1     1     1
+   2 |    2     2     1     1
+   3 |    3     3     3     3
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -6    -9    -8
+   1 |  Inf    -4    -7    -6
+   2 |  Inf    -5    -8    -7
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     2     1     1
+   1 |    1     2     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -6    -9    -8
+   1 |  Inf    -4    -7    -6
+   2 |  Inf    -5    -8    -7
+   3 |  Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     2     1     1
+   1 |    1     2     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+Il y a au moins un circuit absorbant dans ce graphe) !
+L'affichage des chemins n'est pas possible.
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :5
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (4 sommets) :
+
+         0    1    2    3
+      --------------------
+   0 |  -     1   -5   -
+   1 |  -    -    -3    2
+   2 |   6    4   -     2
+   3 |  -    -     2   -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf     0    -3     2
+   2 |    6     4     0     2
+   3 |  Inf   Inf     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf     0    -3     2
+   2 |    6     4     0     2
+   3 |  Inf   Inf     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5     3
+   1 |  Inf     0    -3     2
+   2 |    6     4     0     2
+   3 |  Inf   Inf     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     1
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -1    -5    -3
+   1 |    3     0    -3    -1
+   2 |    6     4     0     2
+   3 |    8     6     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     2     0     2
+   1 |    2     1     1     2
+   2 |    2     2     2     2
+   3 |    2     2     3     3
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -1    -5    -3
+   1 |    3     0    -3    -1
+   2 |    6     4     0     2
+   3 |    8     6     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     2     0     2
+   1 |    2     1     1     2
+   2 |    2     2     2     2
+   3 |    2     2     3     3
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :6
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (4 sommets) :
+
+         0    1    2    3
+      --------------------
+   0 |  -     1   -5   -
+   1 |  -    -1   -3    2
+   2 |   6    4   -     2
+   3 |  -    -     2   -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf    -1    -3     2
+   2 |    6     4     0     2
+   3 |  Inf   Inf     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     1    -5   Inf
+   1 |  Inf    -1    -3     2
+   2 |    6     4     0     2
+   3 |  Inf   Inf     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0     0    -5     2
+   1 |  Inf    -2    -5     0
+   2 |    6     2    -3     2
+   3 |  Inf   Inf     2     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     1
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |    0    -3    -8    -6
+   1 |    1    -3    -8    -6
+   2 |    3    -1    -6    -4
+   3 |    5     1    -4    -8
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     2
+   1 |    2     1     1     2
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3
+      ------------------------
+   0 |   -1    -5   -10   -14
+   1 |   -1    -5   -10   -14
+   2 |    1    -3    -8   -12
+   3 |   -3    -7   -12   -16
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3
+     ------------------------
+   0 |    0     0     0     0
+   1 |    1     1     1     1
+   2 |    2     2     2     2
+   3 |    3     3     3     3
+
+Il y a au moins un circuit absorbant dans ce graphe) !
+L'affichage des chemins n'est pas possible.
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :7
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (7 sommets) :
+
+         0    1    2    3    4    5    6
+      -----------------------------------
+   0 |  -     2   -5   -    -    -    -
+   1 |  -     3   -3    3   -    -    -
+   2 |   7    4   -     3   -    -    -
+   3 |  -    -     2   -    -    -    -
+   4 |  -    -    -    -    -     5   -
+   5 |  -    -    -    -     2   -    -2
+   6 |  -    -    -    -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0     2    -5   Inf   Inf   Inf   Inf
+   1 |  Inf     0    -3     3   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |  Inf   Inf     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5   Inf
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     0     0     0     0     0     0
+   1 |    1     1     1     1     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0     2    -5   Inf   Inf   Inf   Inf
+   1 |  Inf     0    -3     3   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |  Inf   Inf     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5   Inf
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     0     0     0     0     0     0
+   1 |    1     1     1     1     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0     2    -5     5   Inf   Inf   Inf
+   1 |  Inf     0    -3     3   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |  Inf   Inf     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5   Inf
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     0     0     1     0     0     0
+   1 |    1     1     1     1     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0    -1    -5    -2   Inf   Inf   Inf
+   1 |    4     0    -3     0   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |    9     6     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5   Inf
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     2     0     2     0     0     0
+   1 |    2     1     1     2     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    2     2     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0    -1    -5    -2   Inf   Inf   Inf
+   1 |    4     0    -3     0   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |    9     6     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5   Inf
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     2     0     2     0     0     0
+   1 |    2     1     1     2     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    2     2     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0    -1    -5    -2   Inf   Inf   Inf
+   1 |    4     0    -3     0   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |    9     6     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5   Inf
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     2     0     2     0     0     0
+   1 |    2     1     1     2     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    2     2     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=5 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0    -1    -5    -2   Inf   Inf   Inf
+   1 |    4     0    -3     0   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |    9     6     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5     3
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     2     0     2     0     0     0
+   1 |    2     1     1     2     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    2     2     3     3     3     3     3
+   4 |    4     4     4     4     4     4     5
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== ITERATION k=6 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6
+      ------------------------------------------
+   0 |    0    -1    -5    -2   Inf   Inf   Inf
+   1 |    4     0    -3     0   Inf   Inf   Inf
+   2 |    7     4     0     3   Inf   Inf   Inf
+   3 |    9     6     2     0   Inf   Inf   Inf
+   4 |  Inf   Inf   Inf   Inf     0     5     3
+   5 |  Inf   Inf   Inf   Inf     2     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6
+     ------------------------------------------
+   0 |    0     2     0     2     0     0     0
+   1 |    2     1     1     2     1     1     1
+   2 |    2     2     2     2     2     2     2
+   3 |    2     2     3     3     3     3     3
+   4 |    4     4     4     4     4     4     5
+   5 |    5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :8
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (5 sommets) :
+
+         0    1    2    3    4
+      -------------------------
+   0 |  -     1    2    1   -
+   1 |  -    -    -    -     3
+   2 |  -    -    -     1    1
+   3 |  -    -    -    -     4
+   4 |  -    -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf     3
+   2 |  Inf   Inf     0     1     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf     3
+   2 |  Inf   Inf     0     1     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1     4
+   1 |  Inf     0   Inf   Inf     3
+   2 |  Inf   Inf     0     1     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     1
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1     3
+   1 |  Inf     0   Inf   Inf     3
+   2 |  Inf   Inf     0     1     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     2
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1     3
+   1 |  Inf     0   Inf   Inf     3
+   2 |  Inf   Inf     0     1     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     2
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1     3
+   1 |  Inf     0   Inf   Inf     3
+   2 |  Inf   Inf     0     1     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     2
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :9
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (5 sommets) :
+
+         0    1    2    3    4
+      -------------------------
+   0 |  -     1    2    1   -
+   1 |  -    -    -    -    -
+   2 |  -    -    -    -2    1
+   3 |  -    -    -    -     4
+   4 |  -     3   -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     0     3
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     2
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     0     3
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     1
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     2
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     0     3
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf     4     0    -2     1
+   3 |  Inf     7   Inf     0     4
+   4 |  Inf     3   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     2
+   1 |    1     1     1     1     1
+   2 |    2     4     2     2     2
+   3 |    3     4     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :10
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (5 sommets) :
+
+         0    1    2    3    4
+      -------------------------
+   0 |  -     1    2    1   -
+   1 |  -    -    -    -    -
+   2 |  -    -    -    -2   -
+   3 |  -    -    -    -     4
+   4 |  -     3   -7   -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -7   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -7   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     1   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -7   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     0   Inf
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -7    -9     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     2     4
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1     2     0     4
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     2
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -7    -9    -5
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     3
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     3
+   3 |    3     3     3     3     3
+   4 |    4     4     4     2     3
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     1    -3    -5    -1
+   1 |  Inf     0   Inf   Inf   Inf
+   2 |  Inf     5    -5    -7    -3
+   3 |  Inf     7    -3    -5    -1
+   4 |  Inf    -2   -12   -14   -10
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     4     2     3
+   1 |    1     1     1     1     1
+   2 |    2     4     4     2     3
+   3 |    3     4     4     2     3
+   4 |    4     4     4     4     4
+
+Il y a au moins un circuit absorbant dans ce graphe) !
+L'affichage des chemins n'est pas possible.
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :11
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (5 sommets) :
+
+         0    1    2    3    4
+      -------------------------
+   0 |  -    -     2    1   -
+   1 |   1    2   -    -    -
+   2 |  -    -    -    -2   -
+   3 |  -    -    -    -     4
+   4 |  -     3   -1   -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     1   Inf
+   1 |    1     0   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -1   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     1   Inf
+   1 |    1     0     3     2   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |  Inf     3    -1   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     0     0     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     1   Inf
+   1 |    1     0     3     2   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |    4     3    -1     5     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     0     0     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    1     4     4     0     4
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     0   Inf
+   1 |    1     0     3     1   Inf
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf   Inf     0     4
+   4 |    4     3    -1    -3     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     0
+   1 |    1     1     0     2     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    1     4     4     2     4
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     0     4
+   1 |    1     0     3     1     5
+   2 |  Inf   Inf     0    -2     2
+   3 |  Inf   Inf   Inf     0     4
+   4 |    4     3    -1    -3     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     3
+   1 |    1     1     0     2     3
+   2 |    2     2     2     2     3
+   3 |    3     3     3     3     3
+   4 |    1     4     4     2     4
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     7     2     0     4
+   1 |    1     0     3     1     5
+   2 |    6     5     0    -2     2
+   3 |    8     7     3     0     4
+   4 |    4     3    -1    -3     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     4     0     2     3
+   1 |    1     1     0     2     3
+   2 |    1     4     2     2     3
+   3 |    1     4     4     3     3
+   4 |    1     4     4     2     4
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :12
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (5 sommets) :
+
+         0    1    2    3    4
+      -------------------------
+   0 |  -    -     2    1   -
+   1 |   1   -    -    -     1
+   2 |  -    -    -    -2   -
+   3 |  -    -     7   -     4
+   4 |  -     3   -1   -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     1   Inf
+   1 |    1     0   Inf   Inf     1
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf     7     0     4
+   4 |  Inf     3    -1   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     1     1     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     1   Inf
+   1 |    1     0     3     2     1
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf     7     0     4
+   4 |  Inf     3    -1   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     0     0     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    4     4     4     4     4
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     1   Inf
+   1 |    1     0     3     2     1
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf     7     0     4
+   4 |    4     3    -1     5     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     0     0
+   1 |    1     1     0     0     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    1     4     4     0     4
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     0   Inf
+   1 |    1     0     3     1     1
+   2 |  Inf   Inf     0    -2   Inf
+   3 |  Inf   Inf     7     0     4
+   4 |    4     3    -1    -3     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     0
+   1 |    1     1     0     2     1
+   2 |    2     2     2     2     2
+   3 |    3     3     3     3     3
+   4 |    1     4     4     2     4
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0   Inf     2     0     4
+   1 |    1     0     3     1     1
+   2 |  Inf   Inf     0    -2     2
+   3 |  Inf   Inf     7     0     4
+   4 |    4     3    -1    -3     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     0     0     2     3
+   1 |    1     1     0     2     1
+   2 |    2     2     2     2     3
+   3 |    3     3     3     3     3
+   4 |    1     4     4     2     4
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4
+      ------------------------------
+   0 |    0     7     2     0     4
+   1 |    1     0     0    -2     1
+   2 |    6     5     0    -2     2
+   3 |    8     7     3     0     4
+   4 |    4     3    -1    -3     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4
+     ------------------------------
+   0 |    0     4     0     2     3
+   1 |    1     1     4     2     1
+   2 |    1     4     2     2     3
+   3 |    1     4     4     3     3
+   4 |    1     4     4     2     4
+
+
+=== RESULTAT FINAL ===
+Aucun circuit absorbant d├®tect├®.
+
+--- Recherche de chemins optimaux ---
+
+Souhaitez-vous afficher un chemin ? (1: Oui, 0: Non) :0
+
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :1
+
+
+--- Chargement d'un nouveau graphe ---
+Entrez le numero du graphe :13
+
+=== GRAPHE CHARGE ===
+Matrice d'adjacence (8 sommets) :
+
+         0    1    2    3    4    5    6    7
+      ----------------------------------------
+   0 |  -    -     2    1   -    -    -    -
+   1 |   1   -    -    -     1   -    -    -
+   2 |  -    -    -    -2   -    -    -    -
+   3 |  -    -     7   -     4   -    -    -
+   4 |  -     3   -1   -    -    -    -    -
+   5 |  -    -    -    -    -    -     1   -
+   6 |  -    -    -    -    -    -2   -    -2
+   7 |  -    -    -    -    -    -    -    -
+
+
+[Execution de Floyd-Warshall]
+
+=== INITIALISATION ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0   Inf     2     1   Inf   Inf   Inf   Inf
+   1 |    1     0   Inf   Inf     1   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf   Inf   Inf   Inf
+   3 |  Inf   Inf     7     0     4   Inf   Inf   Inf
+   4 |  Inf     3    -1   Inf     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2     0    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     0     0     0     0     0     0     0
+   1 |    1     1     1     1     1     1     1     1
+   2 |    2     2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=0 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0   Inf     2     1   Inf   Inf   Inf   Inf
+   1 |    1     0     3     2     1   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf   Inf   Inf   Inf
+   3 |  Inf   Inf     7     0     4   Inf   Inf   Inf
+   4 |  Inf     3    -1   Inf     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2     0    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     0     0     0     0     0     0     0
+   1 |    1     1     0     0     1     1     1     1
+   2 |    2     2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3     3
+   4 |    4     4     4     4     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=1 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0   Inf     2     1   Inf   Inf   Inf   Inf
+   1 |    1     0     3     2     1   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf   Inf   Inf   Inf
+   3 |  Inf   Inf     7     0     4   Inf   Inf   Inf
+   4 |    4     3    -1     5     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2     0    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     0     0     0     0     0     0     0
+   1 |    1     1     0     0     1     1     1     1
+   2 |    2     2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3     3
+   4 |    1     4     4     0     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=2 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0   Inf     2     0   Inf   Inf   Inf   Inf
+   1 |    1     0     3     1     1   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2   Inf   Inf   Inf   Inf
+   3 |  Inf   Inf     7     0     4   Inf   Inf   Inf
+   4 |    4     3    -1    -3     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2     0    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     0     0     2     0     0     0     0
+   1 |    1     1     0     2     1     1     1     1
+   2 |    2     2     2     2     2     2     2     2
+   3 |    3     3     3     3     3     3     3     3
+   4 |    1     4     4     2     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=3 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0   Inf     2     0     4   Inf   Inf   Inf
+   1 |    1     0     3     1     1   Inf   Inf   Inf
+   2 |  Inf   Inf     0    -2     2   Inf   Inf   Inf
+   3 |  Inf   Inf     7     0     4   Inf   Inf   Inf
+   4 |    4     3    -1    -3     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2     0    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     0     0     2     3     0     0     0
+   1 |    1     1     0     2     1     1     1     1
+   2 |    2     2     2     2     3     2     2     2
+   3 |    3     3     3     3     3     3     3     3
+   4 |    1     4     4     2     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=4 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0     7     2     0     4   Inf   Inf   Inf
+   1 |    1     0     0    -2     1   Inf   Inf   Inf
+   2 |    6     5     0    -2     2   Inf   Inf   Inf
+   3 |    8     7     3     0     4   Inf   Inf   Inf
+   4 |    4     3    -1    -3     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2     0    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     4     0     2     3     0     0     0
+   1 |    1     1     4     2     1     1     1     1
+   2 |    1     4     2     2     3     2     2     2
+   3 |    1     4     4     3     3     3     3     3
+   4 |    1     4     4     2     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=5 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0     7     2     0     4   Inf   Inf   Inf
+   1 |    1     0     0    -2     1   Inf   Inf   Inf
+   2 |    6     5     0    -2     2   Inf   Inf   Inf
+   3 |    8     7     3     0     4   Inf   Inf   Inf
+   4 |    4     3    -1    -3     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf     0     1   Inf
+   6 |  Inf   Inf   Inf   Inf   Inf    -2    -1    -2
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     4     0     2     3     0     0     0
+   1 |    1     1     4     2     1     1     1     1
+   2 |    1     4     2     2     3     2     2     2
+   3 |    1     4     4     3     3     3     3     3
+   4 |    1     4     4     2     4     4     4     4
+   5 |    5     5     5     5     5     5     5     5
+   6 |    6     6     6     6     6     6     5     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=6 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0     7     2     0     4   Inf   Inf   Inf
+   1 |    1     0     0    -2     1   Inf   Inf   Inf
+   2 |    6     5     0    -2     2   Inf   Inf   Inf
+   3 |    8     7     3     0     4   Inf   Inf   Inf
+   4 |    4     3    -1    -3     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf    -1     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf    -3    -2    -4
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     4     0     2     3     0     0     0
+   1 |    1     1     4     2     1     1     1     1
+   2 |    1     4     2     2     3     2     2     2
+   3 |    1     4     4     3     3     3     3     3
+   4 |    1     4     4     2     4     4     4     4
+   5 |    5     5     5     5     5     6     5     6
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+
+=== ITERATION k=7 ===
+
+Matrice des plus courts chemins (poids) :
+
+          0     1     2     3     4     5     6     7
+      ------------------------------------------------
+   0 |    0     7     2     0     4   Inf   Inf   Inf
+   1 |    1     0     0    -2     1   Inf   Inf   Inf
+   2 |    6     5     0    -2     2   Inf   Inf   Inf
+   3 |    8     7     3     0     4   Inf   Inf   Inf
+   4 |    4     3    -1    -3     0   Inf   Inf   Inf
+   5 |  Inf   Inf   Inf   Inf   Inf    -1     0    -2
+   6 |  Inf   Inf   Inf   Inf   Inf    -3    -2    -4
+   7 |  Inf   Inf   Inf   Inf   Inf   Inf   Inf     0
+
+
+Matrice des pr├®d├®cesseurs P :
+
+         0     1     2     3     4     5     6     7
+     ------------------------------------------------
+   0 |    0     4     0     2     3     0     0     0
+   1 |    1     1     4     2     1     1     1     1
+   2 |    1     4     2     2     3     2     2     2
+   3 |    1     4     4     3     3     3     3     3
+   4 |    1     4     4     2     4     4     4     4
+   5 |    5     5     5     5     5     6     5     6
+   6 |    6     6     6     6     6     6     6     6
+   7 |    7     7     7     7     7     7     7     7
+
+Il y a au moins un circuit absorbant dans ce graphe) !
+L'affichage des chemins n'est pas possible.
+
+---------------------------------------------------
+Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) :0
+
+Fin du programme.

@@ -31,13 +31,13 @@ Graph charger_graphe(const char *nom_fichier) { // On essaye de lire le fichier 
     init_graphe(&g); // Si on arrive à le lire on initialise le graphe associe
 
     if (fscanf(fichier, "%d", &g.nbvertexes) != 1) { // On recupere le nombre de sommets
-        fprintf(stderr, "Erreur de format: nombre de sommets manquant.\n");
+        fprintf(stderr, "Nombre de sommets manquant.\n");
         fclose(fichier);
         exit(EXIT_FAILURE);
     }
 
     if (g.nbvertexes > MAX_V) {  //Si le graphe possede trop de sommets : ERREUR
-        printf( "Erreur: Le graphe dépasse la capacité maximale autorisée : %d.\n", MAX_V);
+        printf( "Le graphe dépasse la capacité maximale autorisée : %d.\n", MAX_V);
         fclose(fichier);
         exit(EXIT_FAILURE);
     }
@@ -48,7 +48,7 @@ Graph charger_graphe(const char *nom_fichier) { // On essaye de lire le fichier 
             g.matrice[src][dest].existe = 1;
             g.matrice[src][dest].poids = poids;
         } else {
-            fprintf(stderr, "Attention !!!! Il y a un sommet invalide ignoré (%d -> %d)\n", src, dest);
+            fprintf(stderr, "Atttention ! Sommet (%d -> %d) invalide\n", src, dest);
         }
     }
     fclose(fichier); //On ferme le fichier
@@ -60,7 +60,7 @@ Graph charger_graphe(const char *nom_fichier) { // On essaye de lire le fichier 
 
 
 
-void afficherGraphe(Graph g) {
+void afficherGraphe(Graph g) {  //Affiche la matrice d'adjacence
     printf("Matrice d'adjacence (%d sommets) :\n\n", g.nbvertexes);
 
     printf("      ");
@@ -76,13 +76,13 @@ void afficherGraphe(Graph g) {
     printf("\n");
 
     for (int i = 0; i < g.nbvertexes; i++) {
-        printf(" %3d |", i);
+        printf(" %3d |", i); //colonne des sommets
 
         for (int j = 0; j < g.nbvertexes; j++) {
             if (g.matrice[i][j].existe) {
                 printf("%4d ", g.matrice[i][j].poids);
             } else {
-                printf("  -  ");
+                printf("  -  "); //infini si les sommets ne sont pas liés
             }
         }
         printf("\n");
@@ -94,29 +94,29 @@ void afficherGraphe(Graph g) {
 
 
 
-void afficherMatriceL(Edge L[][MAX_V], int n) {
+void afficherMatriceL(Edge L[][MAX_V], int n) { //Afficher de maniere lisible la matrice des couts
     printf("\nMatrice des plus courts chemins (poids) :\n\n");
 
     printf("      ");
     for (int j = 0; j < n; j++) {
-        printf("%5d ", j);
+        printf("%5d ", j);//pour aligner les nombres
     }
     printf("\n");
 
     printf("      ");
     for (int j = 0; j < n; j++) {
-        printf("------");
+        printf("------"); //separation
     }
     printf("\n");
 
     for (int i = 0; i < n; i++) {
-        printf(" %3d |", i);
+        printf(" %3d |", i); //colonne des sommets
 
         for (int j = 0; j < n; j++) {
             if (!L[i][j].existe) {
-                printf("  Inf ");
+                printf("  Inf "); //infini si un chemin n'existe pas
             } else {
-                printf("%5d ", L[i][j].poids);
+                printf("%5d ", L[i][j].poids); //sinon on l'ajoute
             }
         }
         printf("\n");
@@ -129,47 +129,46 @@ void afficherMatriceL(Edge L[][MAX_V], int n) {
 
 
 
-void afficherMatriceP(Predecesseurs P[][MAX_V], int n) {
+void afficherMatriceP(Predecesseurs P[][MAX_V], int n) { //Affichage de manière lisible la matrice des predecesseurs
     printf("\nMatrice des prédécesseurs P :\n\n");
 
-    // 1. Affichage des en-têtes de colonnes
+    // Affichage des en-têtes de colonnes
     printf("     "); // Espace pour l'index de ligne
     for (int j = 0; j < n; j++) {
-        // %*d permet d'utiliser une largeur variable définie par COL_WIDTH
+        // largeur variable définie par COL_WIDTH
         printf("%*d ", COL_WIDTH, j);
     }
     printf("\n");
 
-    // 2. Affichage de la ligne de séparation
-    printf("     ");
+
+    printf("     ");// ligne de séparation
     for (int j = 0; j < n; j++) {
         for (int k = 0; k <= COL_WIDTH; k++) printf("-"); // Tirets ajustés à la largeur
     }
     printf("\n");
 
-    // 3. Affichage du contenu
-    char buffer[50]; // Tampon pour construire la chaîne "{1,2}"
+    char buffer[50]; // bufer pour écrire "{1,2}" en cas d'ambiguite
 
     for (int i = 0; i < n; i++) {
-        // Affichage de l'index de ligne
+        // l'index de ligne
         printf(" %3d |", i);
 
         for (int j = 0; j < n; j++) {
-            // A. Construction de la chaîne pour cette cellule
+            //  la chaîne pour cette cellule
             if (P[i][j].nb_pred == 0) {
-                // Cas vide ou diagonale selon votre logique
+                // Cas vide ou diagonale
                 sprintf(buffer, "%d",i);
             } else {
-                // Cas avec prédécesseurs : on ouvre l'accolade
+                // Cas avec prédécesseurs
                 sprintf(buffer, "");
                 char temp[10];
 
                 for (int k = 0; k < P[i][j].nb_pred; k++) {
-                    // On ajoute le nombre
+                    // on ajoute le nombre
                     sprintf(temp, "%d", P[i][j].predecesseurs[k]);
                     strcat(buffer, temp);
 
-                    // On ajoute une virgule si ce n'est pas le dernier
+                    // ajout d'une virgule si ce n'est pas le dernier
                     if (k < P[i][j].nb_pred - 1) {
                         strcat(buffer, ",");
                     }
@@ -178,8 +177,8 @@ void afficherMatriceP(Predecesseurs P[][MAX_V], int n) {
                 strcat(buffer, "");
             }
 
-            // B. Affichage de la chaîne formatée
-            // %*s aligne à droite. Utilisez %-*s pour aligner à gauche.
+            //  Affichage de la chaîne
+            //  aligne à droite
             printf("%*s ", COL_WIDTH, buffer);
         }
         printf("\n");
@@ -192,12 +191,12 @@ void afficherMatriceP(Predecesseurs P[][MAX_V], int n) {
 
 
 
-// Fonction pour ajouter un prédécesseur s'il n'existe pas déjà
+//  pour ajouter un prédécesseur s'il n'existe pas déjà
 void ajouterPredecesseur(Predecesseurs *p, int pred) {
     // Vérifier si le prédécesseur existe déjà
     for (int i = 0; i < p->nb_pred; i++) {
         if (p->predecesseurs[i] == pred) {
-            return; // Déjà présent
+            return; // deja présent
         }
     }
 
@@ -216,7 +215,7 @@ void ajouterPredecesseur(Predecesseurs *p, int pred) {
 
 
 
-// Réinitialiser la liste de prédécesseurs
+// Reinitialiser la liste de prédécesseurs
 void resetPredecesseurs(Predecesseurs *p) {
     p->nb_pred = 0;
 }
@@ -235,16 +234,17 @@ int floydWarshall(const Graph graphe, Edge L[][MAX_V], Predecesseurs P[][MAX_V])
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             L[i][j] = graphe.matrice[i][j];
-            P[i][j].nb_pred = 0;
+            P[i][j].nb_pred = 0;  //Regarder l'algo du cours. On ajoute les predecesseur à P et les cout initiaux
 
 
             if (graphe.matrice[i][j].existe) {
                 ajouterPredecesseur(&P[i][j], i);
             }
-            else if (i == j) {
+            if (i == j && graphe.matrice[i][j].existe && graphe.matrice[i][j].poids > 0 || graphe.matrice[i][j].existe == 0 && i == j ) {
                 L[i][j].existe = 1;
                 L[i][j].poids = 0;
             }
+
         }
     }
 
@@ -326,7 +326,7 @@ int floydWarshall(const Graph graphe, Edge L[][MAX_V], Predecesseurs P[][MAX_V])
 void reconstruireTousLesCheminsIteratif(int depart, int arrivee, Predecesseurs P[][MAX_V], Edge L[][MAX_V]) {
     printf("\n=== Reconstitution de TOUS les chemins de %d à %d ===\n", depart, arrivee);
 
-    // 1. Vérifications de base
+    // vérifications de base
     if (!L[depart][arrivee].existe) {
         printf("Aucun chemin.\n");
         return;
@@ -337,66 +337,63 @@ void reconstruireTousLesCheminsIteratif(int depart, int arrivee, Predecesseurs P
     }
 
 
-    // cheminStack : stocke les sommets du chemin en cours de construction (de l'arrivée vers le départ)
+    //  stocke les sommets du chemin de l'arrivée vers le départ
     int cheminStack[MAX_V];
-    // indexStack : stocke à quel "numéro de prédécesseur" on est rendu pour chaque étape
+    // stock à quel "numéro de prédécesseur" on est pour chaque étape
     int indexStack[MAX_V];
     int depth = 0; // Hauteur actuelle de la pile
 
-    // Initialisation : On commence par l'arrivée
+    //  On commence par l'arrivée
     cheminStack[0] = arrivee;
-    indexStack[0] = 0; // On commencera par explorer le 1er prédécesseur de l'arrivée
+    indexStack[0] = 0; // Ole 1er prédécesseur de l'arrivée
 
     int compteurChemins = 0;
 
-    // 3. Boucle principale (Tant que la pile n'est pas vide)
+    // Tant que la pile n'est pas vide
     while (depth >= 0) {
         int courant = cheminStack[depth];
 
-        // --- CAS A : On a atteint le point de départ ---
+        //  point de départ
         if (courant == depart) {
             compteurChemins++;
             printf("Chemin %d : ", compteurChemins);
 
-            // On affiche la pile. Attention, la pile est construite [Arrivée, ..., Départ]
-            // Donc on l'affiche de la fin (depth) vers le début (0)
+
             for (int i = depth; i >= 0; i--) {
-                printf("%d", cheminStack[i]);
+                printf("%d", cheminStack[i]); // On affiche la pile de la fin à début
                 if (i > 0) printf(" -> ");
             }
             printf(" (Cout: %d)\n", L[depart][arrivee].poids);
 
-            // Backtracking forcé pour chercher d'autres chemins
-            depth--;
+
+            depth--; // Backtrack pour chercher sommet
             continue;
         }
 
-        // --- CAS B : Exploration des prédécesseurs ---
-
-        // On récupère la liste des prédécesseurs pour aller de 'depart' à 'courant'
+        // prédécesseurs;liste des prédécesseurs
         Predecesseurs *predsInfo = &P[depart][courant];
-        int idx = indexStack[depth]; // Où en étions-nous dans la liste des prédécesseurs ?
+        int idx = indexStack[depth]; // indice
 
         if (idx < predsInfo->nb_pred) {
-            // Il reste des prédécesseurs à explorer
+            // il reste des prédécesseurs à explorer
             int pred = predsInfo->predecesseurs[idx];
 
-            // 1. On prépare l'index pour la prochaine fois qu'on reviendra à ce niveau
-            // (on passera au prédécesseur suivant)
+
+            //  prédécesseur suivant
             indexStack[depth]++;
 
-            // 2. On empile le nouveau sommet (on avance)
+            //  empile le nouveau sommet
             depth++;
             if (depth >= MAX_V) {
-                printf("Erreur: Chemin trop long (boucle probable).\n");
+                printf(" Chemin trop long il faut gerer les boucles.\n");
                 return;
             }
             cheminStack[depth] = pred;
-            indexStack[depth] = 0; // Pour ce nouveau sommet, on commencera à l'index 0
+            indexStack[depth] = 0; //  on commencera à l'index 0
 
         } else {
-            // --- CAS C : Plus de prédécesseurs pour ce sommet (Cul-de-sac ou tout exploré) ---
-            // On dépile (Backtracking)
+            //pas de de prédécesseurs pour ce sommet
+            // On dépile
             depth--;
         }
     }

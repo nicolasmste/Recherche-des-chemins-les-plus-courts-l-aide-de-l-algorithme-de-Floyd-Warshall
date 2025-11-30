@@ -4,13 +4,16 @@
 #include "FloydWarshall.h"
 #include <string.h>
 
-// Fonction utilitaire pour vider le buffer d'entrée (évite les bugs de scanf)
+// Fonction utilitaire pour vider le buffer pour évite les bugs de scanf
 void viderBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
-char* selectiongraphe(int entier){//On ouvre le graphe voulu
+
+
+//On ouvre le graphe voulu
+char* selectiongraphe(int entier){
     switch(entier){
         case 1:
             return "graphe1.txt";
@@ -38,11 +41,16 @@ char* selectiongraphe(int entier){//On ouvre le graphe voulu
             return "graphe12.txt";
         case 13:
             return "graphe13.txt";
+        case -1:
+            return "graphe0.txt";
         default:
             printf("Veuillez rentrer un numéro entre 1 et 13;");
             return "faux";
     }
 }
+
+
+
 
 int main() {
     int choixMenu = 0;
@@ -53,82 +61,80 @@ int main() {
     printf("Projet Floyd-Warshall\n");
     printf("********\n\n");
 
-
-
-    //  Boucle principale : Exécuter sur une suite de graphes sans relancer le programme
+    //  Boucle principale
     do {
-        // --- ÉTAPE 1 : Chargement du graphe ---
-        // L'utilisateur indique le graphe à analyser
+
+
+        // Chargement du graphe
+        // :'utilisateur indique le graphe à analyser
         printf("\n--- Chargement d'un nouveau graphe ---\n");
-        printf("Entrez le nom du fichier du graphe  : ");
+        printf("Entrez le numero du graphe : ");
         scanf("%d",&entier);
-        strcpy(nomFichier, selectiongraphe(entier));
-        //  Chargement en mémoire
-        if (strcmp(nomFichier,"faux") != 0) {
-            Graph graphe = charger_graphe(nomFichier);
+        strcpy(nomFichier, selectiongraphe(entier)); //selection du graphe
 
+        if (strcmp(nomFichier,"faux") != 0) { //si le graphe est là
+            if (strcmp(nomFichier,"graphe0.txt") == 0){ //si c'est pas le graphe du scenario
+            printf("Vous êtes dans la simulation d'Efr'elecom \n");
+            }
 
-            //  À partir d'ici, on n'accède plus au fichier, tout est en mémoire.
+                Graph graphe = charger_graphe(nomFichier); //  Chargement en mémoire
+                //  Affichage sous forme matricielle le graphe Initial
 
-            // --- ÉTAPE 2 : Affichage Initial ---
-            //  Affichage sous forme matricielle
+                printf("=== GRAPHE CHARGE ===\n");
+                afficherGraphe(graphe);
 
-            printf("=== GRAPHE CHARGE ===\n");
-            afficherGraphe(graphe);
+                // Algorithme de Floyd-Warshall
+                // xécution et affichage des matrices intermédiaires
+                printf("\n[Execution de Floyd-Warshall]\n");
+                static Edge L[MAX_V][MAX_V]; //Static pour eviter les problemes de memoire
+                static Predecesseurs P[MAX_V][MAX_V];
+                int circuit = floydWarshall(graphe, L, P);
 
+                // détection de circuits Absorbants
+                // Indication de la présence d'un circuit absorbant
+                if (!circuit) {
+                    printf("\n=== RESULTAT FINAL ===\n");
+                    printf("Aucun circuit absorbant détecté.\n");
 
+                    printf("\n--- Recherche de chemins optimaux ---\n");
+                    int sommetDepart, sommetArrivee;
+                    int choixChemin = 1;
 
-            // --- ÉTAPE 3 : Algorithme de Floyd-Warshall ---
-            // xécution et affichage des matrices intermédiaires
-            printf("\n[Execution de Floyd-Warshall]\n");
-            static Edge L[MAX_V][MAX_V]; //Static pour eviter les problemes de memoire
-            static Predecesseurs P[MAX_V][MAX_V];
-            int circuit = floydWarshall(graphe, L, P);
-
-            // --- ÉTAPE 4 : Circuits Absorbants ---
-            // Indication de la présence d'un circuit absorbant
-            if (!circuit) {
-                printf("\n=== RESULTAT FINAL ===\n");
-                printf("Aucun circuit absorbant détecté.\n");
-
-                printf("\n--- Recherche de chemins optimaux ---\n");
-                int sommetDepart, sommetArrivee;
-                int choixChemin = 1;
-
-                while (1) {
-                    //  Chemin ?
-                    printf("\nSouhaitez-vous afficher un chemin ? (1: Oui, 0: Non) : ");
-                    if (scanf("%d", &choixChemin) != 1) {
-                        viderBuffer(); // Gérer les entrées non numériques
-                        choixChemin = 0;
-                    }
-
-                    //  Si non, arrêter cette boucle
-                    if (choixChemin == 0) {
-                        break;
-                    }
-
-                    // Sommet de départ ? Sommet d'arrivée ?
-                    printf("Sommet de depart ? : ");
-                    scanf("%d", &sommetDepart);
-
-                    printf("Sommet d'arrivee ? : ");
-                    scanf("%d", &sommetArrivee);
-
-                    // Validation basique des sommets
-                    if (sommetDepart < 0 || sommetDepart >= graphe.nbvertexes ||
-                        sommetArrivee < 0 || sommetArrivee >= graphe.nbvertexes) {
-                        printf("Erreur : Les sommets doivent etre entre 0 et %d.\n", graphe.nbvertexes - 1);
-                        } else {
-                            // Affichage du chemin
-                            reconstruireTousLesCheminsIteratif(sommetDepart, sommetArrivee, P,L);
+                    while (1) {
+                        //  Chemin ?
+                        printf("\nSouhaitez-vous afficher un chemin ? (1: Oui, 0: Non) : ");
+                        if (scanf("%d", &choixChemin) != 1) {
+                            viderBuffer(); // Gérer les entrées non numériques
+                            choixChemin = 0;
                         }
 
-                    // Recommencer ? (C'est implicite avec le while(1) et la question au début)
-                }
+                        //  Si non, arrêter cette boucle
+                        if (choixChemin == 0) {
+                            break;
+                        }
 
-            }else printf("L'affichage des chemins n'est pas possible.\n");
+                        // Sommet de départ ? Sommet d'arrivée ?
+                        printf("Sommet de depart ? : ");
+                        scanf("%d", &sommetDepart);
+                        printf("Sommet d'arrivee ? : ");
+                        scanf("%d", &sommetArrivee);
 
+                        // Validation basique des sommets
+                        if (sommetDepart < 0 || sommetDepart >= graphe.nbvertexes ||
+                            sommetArrivee < 0 || sommetArrivee >= graphe.nbvertexes) {
+                            printf("Erreur : Les sommets doivent etre entre 0 et %d.\n", graphe.nbvertexes - 1);
+                            } else {
+                                // Affichage du chemin
+                                reconstruireTousLesCheminsIteratif(sommetDepart, sommetArrivee, P,L);
+                            }
+
+                        // Recommencer ?
+                    }
+
+                }else printf("L'affichage des chemins n'est pas possible.\n");
+            if (strcmp(nomFichier,"graphe0.txt") == 0){
+                printf("Vous êtes dans la simulation d'Efr'elecom\n Voici les chemins de fibre optique.\n");
+            }
         }
         viderBuffer();
         // Demander si on veut traiter un autre graphe
@@ -136,7 +142,7 @@ int main() {
         printf("Voulez-vous traiter un autre graphe ? (1: Oui, 0: Non) : ");
         scanf("%d", &choixMenu);
 
-    } while (choixMenu != 0);
+    } while (choixMenu != 0);//Tantque l'utilisateur ne veut pas quitter
 
     printf("Fin du programme.\n");
     return 0;
